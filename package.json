@@ -11,12 +11,12 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mbMAV/weather-journal-app1.git"
+    "url": "https://github.com/mbMAV/Travel_App"
   },
   "bugs": {
-    "url": "https://github.com/mbMAV/weather-journal-app1/issues"
+    "url": "https://github.com/mbMAV/Travel_App/issues"
   },
-  "homepage": "https://github.com/mbMAV/weather-journal-app1#readme",
+  "homepage": "https://github.com/mbMAV/Travel_App#readme",
   "dependencies": {
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",
