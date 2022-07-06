@@ -1,3 +1,44 @@
+var path = require('path')
+const express = require('express')
+const fetch = require('node-fetch')
+const FormData = require('form-data')
+const dotenv = require('dotenv')
+dotenv.config()
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+
+const app = express()
+
+const port = 8083
+
+/* Middleware*/
+//Here we are configuring express to use body-parser as middle-ware.
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// Cors for cross origin allowance
+const cors = require('cors');
+app.use(cors());
+
+app.use(express.static('dist'))
+
+app.get('/', function (req, res) {
+    res.sendFile('dist/index.html')
+})
+
+// designates what port the app will listen to for incoming requests
+app.listen(port, function () {
+    console.log(`Example app listening on port ${port}!`)
+})
+
+
+
+
+
+
+
+
+
 // Setup empty JS object to act as endpoint for all routes
 projectData = {};
 
