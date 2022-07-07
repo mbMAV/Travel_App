@@ -5,38 +5,30 @@
 <title>Travel App</title>
 </head>
 <body>
-<div id = "app">
-  <div class ="holder headline">
-    Travel App
-  </div>
-  <div class ="holder zip">
-    <label for="zip">Enter Zipcode here</label>
-    <input type="text" id="zip" placeholder="enter zip code here">
-  </div>
-
-  <main>
-    <section>
-        <form class="" onsubmit="return Client.handleSubmit(event)">
-            <input id="name" type="text" name="input" value="" onblur="" placeholder="Text">
-            <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
-        </form>
-    </section>
-
-    <section>
-        <strong>Form Results:</strong>
-        <div id="results"></div>
-    </section>
-</main>
-
-  <div class ="holder entry">
-    <div class = "title">Most Recent Entry</div>
-      <div id = "entryHolder">
-        <div id = "date"></div>
-        <div id = "temp"></div>
-        <div id = "content"></div>
-      </div>
+    <div class ="holder headline">
+        Travel App
     </div>
-  </div>
+
+    <main>
+        <section>
+            <form action="/action_page.php">
+                <label for="traveldate">Travel date:</label>
+                <input type="date" id="traveldate" name="traveldate">
+            </form>
+        </section>
+
+        <section>
+            <form class="" onsubmit="return Client.handleSubmit(event)">
+                <input id="name" type="text" name="input" value="" onblur="" placeholder="Destination">
+                <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
+            </form>
+        </section>
+
+        <section>
+            <strong>Form Results:</strong>
+            <div id="results"></div>
+        </section>
+    </main>
 
 </body>
 </html>
