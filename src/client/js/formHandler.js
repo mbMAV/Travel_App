@@ -9,7 +9,7 @@ export function handleSubmit(event) {
 
     if(Client.checkForName(data) == true) {
     console.log(data)
-    apiRequest('http://localhost:8083/meaningApi', data)
+    apiRequest('http://localhost:8083/geonamesApi', data)
     } else {
         console.log("No imput from user!")
         return

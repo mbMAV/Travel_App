@@ -5,15 +5,15 @@ const FormData = require('form-data')
 const dotenv = require('dotenv')
 dotenv.config()
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
-
 const app = express()
-
 const port = 8083
 
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 app.use(bodyParser.json());
 
 // Cors for cross origin allowance
@@ -31,7 +31,31 @@ app.listen(port, function () {
     console.log(`Example app listening on port ${port}!`)
 })
 
+app.post('/geonamesApi', function (request, response) {
+    console.log("run post route");
+    const geoUser = process.env.GEO_USER;
+    let location = "";
+    location = request.body.text;
+    console.log(location);
 
+    const getGeo = fetch(`http://api.geonames.org/searchJSON?q=${location}&maxRows=10&username=${geoUser}`)
+        .then((response) => response.json())
+        .then((body) => {
+            console.log("::: Response is here :::");
+            console.log(body);
+            const apidata = {
+                lat: body.geonames[0].lat,
+                lng: body.geonames[0].lng
+            }
+            return apidata;
+        })
+        .then(apidata => {
+            console.log(apidata);
+            response.send(apidata)
+        })
+
+        .catch(error => console.log('error', error));
+});
 
 
 
