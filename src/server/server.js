@@ -8,6 +8,8 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
 const app = express()
 const port = 8083
 
+apidata = {}
+
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
 const bodyParser = require('body-parser');
@@ -32,10 +34,10 @@ app.listen(port, function () {
 })
 
 app.post('/geonamesApi', function (request, response) {
-    console.log("run post route");
+    console.log("run geoApi post route");
+    response => response.json()
     const geoUser = process.env.GEO_USER;
-    let location = "";
-    location = request.body.text;
+    let location = request.body.text;
     console.log(location);
 
     const getGeo = fetch(`http://api.geonames.org/searchJSON?q=${location}&maxRows=10&username=${geoUser}`)
@@ -55,9 +57,60 @@ app.post('/geonamesApi', function (request, response) {
         })
 
         .catch(error => console.log('error', error));
+
+    // const weatherUser = process.env.WETHERBIT_KEY;
+    // let daysOffset = request.body.Timespan_days;
+    // let geoLocation = `lat=${apidata.lat}&lon=${apidata.lng}`;
+    // console.log(location);
+
+    // const getweather = async()=>{
+    //     await fetch(`https://api.weatherbit.io/v2.0/forecast/daily?&${geoLocation}&days=${daysOffset}&key=${weatherUser}`)
+    //     .then((response) => response.json())
+    //     .then((body) => {
+    //         console.log("::: Response is here :::");
+    //         console.log(body);
+    //         const apidata = {
+    //             lat: body.geonames[0].lat,
+    //             lng: body.geonames[0].lng
+    //         }
+    //         return apidata;
+    //     })
+    //     .then(apidata => {
+    //     console.log(apidata);
+    //     response.send(apidata)
+    //     })
+
+    //     .catch(error => console.log('error', error));
+    // }
 });
 
+app.post('/weatherApi', function (request, response) {
+    console.log("run weatherApi post route");
+    const weatherUser = process.env.WEATHERBIT_KEY;
+    let daysOffset = request.body.Timespan_days;
+    let geoLocation = `lat=${request.body.lat}&lon=${request.body.lng}`;
+    console.log(geoLocation);
+    console.log(daysOffset);
 
+
+    const getGeo = fetch(`http://api.weatherbit.io/v2.0/forecast/daily?&${geoLocation}&days=${daysOffset}&key=${weatherUser}`)
+        .then((response) => response.json())
+        .then((body) => {
+            console.log("::: Response is here :::");
+            console.log(body);
+            const apidata = {
+                // lat: body.geonames[0].lat,
+                // lng: body.geonames[0].lng
+            }
+            return apidata;
+        })
+        .then(apidata => {
+            console.log(apidata);
+            response.send(apidata)
+        })
+
+        .catch(error => console.log('error', error));
+});
 
 
 
