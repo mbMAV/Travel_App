@@ -40,14 +40,16 @@ app.post('/geonamesApi', function (request, response) {
     let location = request.body.text;
     console.log(location);
 
-    const getGeo = fetch(`http://api.geonames.org/searchJSON?q=${location}&maxRows=10&username=${geoUser}`)
+    const getGeo = fetch(`http://api.geonames.org/searchJSON?q=${location}&maxRows=1&username=${geoUser}`)
         .then((response) => response.json())
         .then((body) => {
             console.log("::: Response is here :::");
             console.log(body);
             const apidata = {
                 lat: body.geonames[0].lat,
-                lng: body.geonames[0].lng
+                lng: body.geonames[0].lng,
+                name: body.geonames[0].name,
+                country: body.geonames[0].countryName,
             }
             return apidata;
         })
@@ -99,8 +101,8 @@ app.post('/weatherApi', function (request, response) {
             console.log("::: Response is here :::");
             console.log(body);
             const apidata = {
-                // lat: body.geonames[0].lat,
-                // lng: body.geonames[0].lng
+                midTemp: body.data[0].temp,
+                sky: body.data[0].weather.description
             }
             return apidata;
         })
