@@ -59,31 +59,6 @@ app.post('/geonamesApi', function (request, response) {
         })
 
         .catch(error => console.log('error', error));
-
-    // const weatherUser = process.env.WETHERBIT_KEY;
-    // let daysOffset = request.body.Timespan_days;
-    // let geoLocation = `lat=${apidata.lat}&lon=${apidata.lng}`;
-    // console.log(location);
-
-    // const getweather = async()=>{
-    //     await fetch(`https://api.weatherbit.io/v2.0/forecast/daily?&${geoLocation}&days=${daysOffset}&key=${weatherUser}`)
-    //     .then((response) => response.json())
-    //     .then((body) => {
-    //         console.log("::: Response is here :::");
-    //         console.log(body);
-    //         const apidata = {
-    //             lat: body.geonames[0].lat,
-    //             lng: body.geonames[0].lng
-    //         }
-    //         return apidata;
-    //     })
-    //     .then(apidata => {
-    //     console.log(apidata);
-    //     response.send(apidata)
-    //     })
-
-    //     .catch(error => console.log('error', error));
-    // }
 });
 
 app.post('/weatherApi', function (request, response) {
@@ -114,6 +89,31 @@ app.post('/weatherApi', function (request, response) {
         .catch(error => console.log('error', error));
 });
 
+app.post('/pictureApi', function (request, response) {
+    console.log("run pictureApi post route");
+    const pixabayUser = process.env.PIXABAY_KEY;
+    let random = Math.floor(Math.random() * 21);
+    let picLocation = request.body.name;
+    console.log(picLocation);
+
+
+    const getGeo = fetch(`https://pixabay.com/api/?key=${pixabayUser}&q=${picLocation}&image_type=photo&pretty=true`)
+        .then((response) => response.json())
+        .then((body) => {
+            console.log("::: Response is here :::");
+            console.log(body);
+            const apidata = {
+                picLink: body.hits[random].webformatURL,
+            }
+            return apidata;
+        })
+        .then(apidata => {
+            console.log(apidata);
+            response.send(apidata)
+        })
+
+        .catch(error => console.log('error', error));
+});
 
 
 

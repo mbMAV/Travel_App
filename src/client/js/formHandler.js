@@ -43,9 +43,9 @@ export async function handleSubmit(event) {
     console.log(data)
     await apiRequest1('http://localhost:8083/weatherApi', data)
 
-    // console.log("::: Before picture :::")
-    // console.log(data)
-    // await apiRequest1('http://localhost:8083/pictureApi', data)
+    console.log("::: Before picture :::")
+    console.log(data)
+    await apiRequest2('http://localhost:8083/pictureApi', data)
 
     // console.log("::: Form Submitted :::")
     // fetch('http://localhost:8083/test')
@@ -103,6 +103,31 @@ const apiRequest1 = async (url = '', data) => {
         const message = JSON.stringify(newData)
         Object.assign(data, newData)
         document.getElementById('results_weather').innerHTML = data.midTemp+"<br>"+data.sky
+    } catch (error) {
+        console.log("error", error);
+    }
+}
+
+// Make async weather POST request
+const apiRequest2 = async (url = '', data) => {
+    const res = await fetch(url, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        // Body data type must match "Content-Type" header
+        body: JSON.stringify(data),
+    });
+
+    try {
+        const newData = await res.json();
+        console.log("::: newData is here! :::");
+        console.log(newData);
+        const message = JSON.stringify(newData)
+        Object.assign(data, newData)
+        document.getElementById('results_picture').innerHTML = `<img src=${data.picLink} alt=Picture of ${data.name}>`;
     } catch (error) {
         console.log("error", error);
     }
