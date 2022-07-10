@@ -4,7 +4,11 @@ export function checkForName(data) {
 
     if(data.text == "") {
         alert("Insert location please!")
-    } else{
+    } else if (data.date == "") {
+        alert("Insert Travel date please!")
+    } else if (data.return == "") {
+        alert("Insert Return date please!")
+    } else {
         return true
     }
 

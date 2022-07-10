@@ -69,8 +69,7 @@ app.post('/weatherApi', function (request, response) {
     console.log(geoLocation);
     console.log(daysOffset);
 
-
-    const getGeo = fetch(`http://api.weatherbit.io/v2.0/forecast/daily?&${geoLocation}&days=${daysOffset}&key=${weatherUser}`)
+    const getWeather = fetch(`http://api.weatherbit.io/v2.0/forecast/daily?&${geoLocation}&days=${daysOffset}&key=${weatherUser}`)
         .then((response) => response.json())
         .then((body) => {
             console.log("::: Response is here :::");
@@ -96,8 +95,7 @@ app.post('/pictureApi', function (request, response) {
     let picLocation = request.body.name;
     console.log(picLocation);
 
-
-    const getGeo = fetch(`https://pixabay.com/api/?key=${pixabayUser}&q=${picLocation}&image_type=photo&pretty=true`)
+    const getPicture = fetch(`https://pixabay.com/api/?key=${pixabayUser}&q=${picLocation}&image_type=photo&pretty=true`)
         .then((response) => response.json())
         .then((body) => {
             console.log("::: Response is here :::");

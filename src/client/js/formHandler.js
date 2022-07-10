@@ -44,18 +44,17 @@ export async function handleSubmit(event) {
         console.log("::: Before geo :::")
         console.log(data)
         await apiRequest('http://localhost:8083/geonamesApi', data)
+
+        console.log("::: Before weateher :::")
+        console.log(data)
+        await apiRequest1('http://localhost:8083/weatherApi', data)
+
+        console.log("::: Before picture :::")
+        console.log(data)
+        await apiRequest2('http://localhost:8083/pictureApi', data)
     } else {
         console.log("No imput from user!")
-        return
     }
-
-    console.log("::: Before weateher :::")
-    console.log(data)
-    await apiRequest1('http://localhost:8083/weatherApi', data)
-
-    console.log("::: Before picture :::")
-    console.log(data)
-    await apiRequest2('http://localhost:8083/pictureApi', data)
 }
 
 // Make async geonames POST request
@@ -77,9 +76,6 @@ const apiRequest = async (url = '', data) => {
         console.log(newData);
         Object.assign(data, newData)
         console.log(data)
-        document.getElementById('results_geo').innerHTML = data.name+"<br>"+data.country
-        document.getElementById('results_time').innerHTML = data.timeSpanDays
-        document.getElementById('results_duration').innerHTML = data.timeDuration
     } catch (error) {
         console.log("error", error);
     }
@@ -103,13 +99,12 @@ const apiRequest1 = async (url = '', data) => {
         console.log("::: newData is here! :::");
         console.log(newData);
         Object.assign(data, newData)
-        document.getElementById('results_weather').innerHTML = data.midTemp+"<br>"+data.sky
     } catch (error) {
         console.log("error", error);
     }
 }
 
-// Make async weather POST request
+// Make async picture POST request
 const apiRequest2 = async (url = '', data) => {
     const res = await fetch(url, {
         method: 'POST',
@@ -127,6 +122,14 @@ const apiRequest2 = async (url = '', data) => {
         console.log("::: newData is here! :::");
         console.log(newData);
         Object.assign(data, newData)
+        if (data.name == data.country) {
+            document.getElementById('results_geo').innerHTML = data.country
+        } else {
+            document.getElementById('results_geo').innerHTML = data.name+"<br>"+data.country
+        }
+        document.getElementById('results_weather').innerHTML = data.midTemp+"<br>"+data.sky
+        document.getElementById('results_time').innerHTML = data.timeSpanDays
+        document.getElementById('results_duration').innerHTML = data.timeDuration
         document.getElementById('results_picture').innerHTML = `<img src=${data.picLink} alt=Picture of ${data.name}>`;
     } catch (error) {
         console.log("error", error);
