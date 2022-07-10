@@ -12,11 +12,14 @@
     <main>
         <section>
             <form action="/action_page.php">
-                <label for="traveldate">Travel date:</label>
-                <input type="date" id="traveldate" name="traveldate">
+                <label for="travelDate">Travel date:</label>
+                <input type="date" id="travelDate" name="travelDate">
+            </form>
+            <form action="/action_page.php">
+                <label for="travelDate">Return date:</label>
+                <input type="date" id="returnDate" name="travelDate">
             </form>
         </section>
-
         <section>
             <form class="" onsubmit="return Client.handleSubmit(event)">
                 <input id="name" type="text" name="input" value="" onblur="" placeholder="Destination">
@@ -29,6 +32,7 @@
             <div id="results_geo"></div>
             <div id="results_weather"></div>
             <div id="results_time"></div>
+            <div id="results_duration"></div>
             <div id="results_picture"></div>
             <div id="pixabay_picture">
                 <a href="https://pixabay.com/">
