@@ -5,39 +5,53 @@
 <title>Travel App</title>
 </head>
 <body>
-    <div class ="holder headline">
-        Travel App
-    </div>
+
+    <header>
+        <div class ="holder headline">
+            <h1>Travel App</h1>
+        </div>
+    </header>
 
     <main>
         <section>
-            <form action="/action_page.php">
-                <label for="travelDate">Travel date:</label>
-                <input type="date" id="travelDate" name="travelDate">
-            </form>
-            <form action="/action_page.php">
-                <label for="travelDate">Return date:</label>
-                <input type="date" id="returnDate" name="travelDate">
-            </form>
-        </section>
-        <section>
-            <form class="" onsubmit="return Client.handleSubmit(event)">
-                <input id="name" type="text" name="input" value="" onblur="" placeholder="Destination">
-                <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
-            </form>
+            <div class="box">
+                <form class="item" action="/action_page.php">
+                    <label for="travelDate">Travel date:</label>
+                    <input class="date" type="date" id="travelDate" name="travelDate">
+                </form>
+                <form class="item" action="/action_page.php">
+                    <label for="returnDate">Return date:</label>
+                    <input class="date" type="date" id="returnDate" name="returnDate">
+                </form>
+                <form class="item" onsubmit="return Client.handleSubmit(event)">
+                    <input id="name" type="text" name="input" value="" onblur="" placeholder="Destination">
+                    <input id="submit" type="submit" name="submit" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
+                </form>
+            </div>
         </section>
 
         <section>
-            <strong>Form Results:</strong>
-            <div id="results_geo"></div>
-            <div id="results_weather"></div>
-            <div id="results_time"></div>
-            <div id="results_duration"></div>
-            <div id="results_picture"></div>
-            <div id="pixabay_picture">
-                <a href="https://pixabay.com/">
-                    <img src="https://pixabay.com/static/img/logo.png" alt="Pixabay Logo">
-                </a>
+            <div class="box">
+                <h2>Travel data:</h2>
+                <div class="group">
+                    <div class="info" id="results_geo"></div>
+                    <div class="info" id="results_weather"></div>
+                </div>
+                <div class="group">
+                    <div class="info" id="results_time"></div>
+                    <div class="info" id="results_duration"></div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="box">
+                <div id="results_picture"></div>
+                <div id="pixabay_picture">
+                    <a href="https://pixabay.com/">
+                        <img src="https://pixabay.com/static/img/logo.png" alt="Pixabay Logo">
+                    </a>
+                </div>
             </div>
         </section>
     </main>

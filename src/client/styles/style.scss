@@ -1,116 +1,101 @@
+$bgcolor: black;
+$textcolor: lightsalmon;
+$fontsize: 35px;
+$border:lightgray;
+
+@mixin heading {
+    font-size: 40px;
+    text-shadow: 2px 2px 5px $textcolor;
+}
+
 body{
-    background: #fffff8;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: $bgcolor;
+    color: $textcolor;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-#app{
-    display: grid;
-    grid-auto-rows: minmax(150px, auto);
-    /* grid-template-columns:  */
-    height:100vh;
-    background: #f23557;
-    color: #f0d43a;
-    justify-content: center;
-    grid-gap: 1em;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+header{
+    @include heading;
 }
 
-// .holder{
-
-// }
-
-.entry{
-    background: rgba(59, 74, 107, .4);
-    width: 80%;
+.item {
+    font-size: 1.2em;
+    margin: 5px;
+    padding: 5px;
+    background-color: darkgray;
+    color: black;
+    border-radius: 3px;
 }
 
-// #entryHolder{
-
-// }
-
-// #date{
-
-// }
-
-// #temp{
-
-// }
-
-// #content{
-
-// }
-
-// .headline {
-
-// }
-
-// .title{
-
-// }
-
-/*  Basic Styling To Override Default For Basic HTML Elements */
-label{
-    display:block;
-    font-size: 27px;
+#submit{
+    background-color: white;
+    color: black;
+    &:hover{
+        background-color: sandybrown;
+        color: black;
+    }
 }
 
-input{
-    display:block;
-    height: 60px;
-    width: 320px;
-    background:#22b2da;
-    color: #f0d43a;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
+h2 {
+    font-size: 1.8em;
 }
 
-button{
-    width: 400px;
-    height: 100px;
-    background: #3b4a6b;
-    color: #f0d43a;
-    font-size: 26px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
-    box-shadow: 2px 4px 5px #444;
+.info {
+    margin: 10px;
 }
 
-h1{
-    font-size: 36px;
+.box {
+    width: 85vw;
+    display: flex;
+    flex-direction: row;
+    border-style: dotted;
+    border-radius: 10px;
+    border-color: $border;
+    padding: 10px;
+    margin: 5px;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: space-evenly;
 }
 
-textarea{
-    background:#22b2da;
-    color: #f0d43a;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+.group {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
 }
 
-/* Reset style for HTML element on active to have no border*/
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
+.info {
+    margin: 20px;
 }
 
-/* Style for Placeholder Text*/
-::placeholder { /* Firefox, Chrome, Opera */
-    color: #f0d43a;
-    font-family: 'Oswald', sans-serif;
-
+.group {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    justify-self: center;
+    align-self: center;
 }
 
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: #f0d43a;
-    font-family: 'Oswald', sans-serif;
-
+@media (max-width: 750px) {
+    .box {
+        width: 85vw;
+        display: flex;
+        flex-direction: column;
+        border-style: dotted;
+        border-radius: 10px;
+        border-color: $border;
+        padding: 10px;
+        margin: 5px;
+        flex-wrap: nowrap;
+    }
 }
 
-::-ms-input-placeholder { /* Microsoft Edge */
-    color: #f0d43a;
-    font-family: 'Oswald', sans-serif;
-
+img {
+    width: 100%;
+    height: auto;
 }

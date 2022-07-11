@@ -123,14 +123,14 @@ const apiRequest2 = async (url = '', data) => {
         console.log(newData);
         Object.assign(data, newData)
         if (data.name == data.country) {
-            document.getElementById('results_geo').innerHTML = data.country
+            document.getElementById('results_geo').innerHTML = "Your Trip goes to:<br>"+data.country
         } else {
-            document.getElementById('results_geo').innerHTML = data.name+"<br>"+data.country
+            document.getElementById('results_geo').innerHTML = "Your Trip goes to:<br>"+data.name+"<br>"+data.country
         }
-        document.getElementById('results_weather').innerHTML = data.midTemp+"<br>"+data.sky
-        document.getElementById('results_time').innerHTML = data.timeSpanDays
-        document.getElementById('results_duration').innerHTML = data.timeDuration
-        document.getElementById('results_picture').innerHTML = `<img src=${data.picLink} alt=Picture of ${data.name}>`;
+        document.getElementById('results_weather').innerHTML = "The Weather is:<br>"+data.midTemp+"°C"+"<br>"+data.sky
+        document.getElementById('results_time').innerHTML = "Start in:<br>"+data.timeSpanDays+" Days"
+        document.getElementById('results_duration').innerHTML = "Duration:<br>"+data.timeDuration+" Days"
+        document.getElementById('results_picture').innerHTML = `<img style="border: goldenrod; border-style: double;" src=${data.picLink} alt=Picture of ${data.name}>`;
     } catch (error) {
         console.log("error", error);
     }

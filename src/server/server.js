@@ -8,7 +8,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
 const app = express()
 const port = 8083
 
-apidata = {}
+let apidata = {}
 
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
