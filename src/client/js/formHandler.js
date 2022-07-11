@@ -12,6 +12,8 @@ export async function handleSubmit(event) {
     }
     console.log(data)
 
+
+    // calculate dates and durations
     let date1 = Date.now()
     let date2 = new Date(data.date)
     let date3 = new Date(data.return)
@@ -40,6 +42,7 @@ export async function handleSubmit(event) {
         timeDuration
     })
 
+    // call post routes to get data from APIs
     if (Client.checkForName(data) == true) {
         console.log("::: Before geo :::")
         console.log(data)
@@ -122,6 +125,8 @@ const apiRequest2 = async (url = '', data) => {
         console.log("::: newData is here! :::");
         console.log(newData);
         Object.assign(data, newData)
+
+        // manipulate DOM with new data
         if (data.name == data.country) {
             document.getElementById('results_geo').innerHTML = "Your Trip goes to:<br>"+data.country
         } else {

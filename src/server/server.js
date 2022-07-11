@@ -33,6 +33,8 @@ app.listen(port, function () {
     console.log(`Example app listening on port ${port}!`)
 })
 
+
+// post route for fetching geonames Api
 app.post('/geonamesApi', function (request, response) {
     console.log("run geoApi post route");
     response => response.json()
@@ -61,6 +63,7 @@ app.post('/geonamesApi', function (request, response) {
         .catch(error => console.log('error', error));
 });
 
+// post route for fetching weather Api
 app.post('/weatherApi', function (request, response) {
     console.log("run weatherApi post route");
     const weatherUser = process.env.WEATHERBIT_KEY;
@@ -88,6 +91,7 @@ app.post('/weatherApi', function (request, response) {
         .catch(error => console.log('error', error));
 });
 
+// post route for fetching picture Api
 app.post('/pictureApi', function (request, response) {
     console.log("run pictureApi post route");
     const pixabayUser = process.env.PIXABAY_KEY;
