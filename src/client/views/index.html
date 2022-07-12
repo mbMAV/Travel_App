@@ -23,9 +23,9 @@
                     <label for="returnDate">Return date:</label>
                     <input class="date" type="date" id="returnDate" name="returnDate">
                 </form>
-                <form class="item" onsubmit="return Client.handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="" placeholder="Destination">
-                    <input id="submit" type="submit" name="submit" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
+                <form class="item" onsubmit="">
+                    <input id="name" type="text" name="input" placeholder="Destination">
+                    <input id="load" type="submit" name="submit" value="submit">
                 </form>
             </div>
         </section>
@@ -55,6 +55,12 @@
             </div>
         </section>
     </main>
-
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
 </body>
 </html>

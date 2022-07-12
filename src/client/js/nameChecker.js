@@ -1,5 +1,4 @@
 export function checkForName(data) {
-    console.log("::: Running checkForName :::", data.text)
     event.preventDefault()
 
     if(data.text == "") {
@@ -11,5 +10,4 @@ export function checkForName(data) {
     } else {
         return true
     }
-
 }
