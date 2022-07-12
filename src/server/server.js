@@ -116,3 +116,10 @@ app.post('/pictureApi', function (request, response) {
 
         .catch(error => console.log('error', error));
 });
+
+// Testin route
+app.get('/test',  function (req, res) {
+    res.send({message: 'Success'})
+});
+
+module.exports = app
